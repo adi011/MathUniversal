@@ -43,6 +43,7 @@ namespace MathUniversal.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<ExpressionsViewModel>();
         }
 
         public MainViewModel Main

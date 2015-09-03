@@ -5,9 +5,11 @@
     xmlns:local="using:MathUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     DataContext="{Binding Source={StaticResource Locator}, Path=Expressions}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <ListView ItemTemplate="{StaticResource ExpressionTemplate}" ItemsSource="{Binding Expressions}"/>    
+        <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Calculate" Command="{Binding CalculateCommand}" />
     </Grid>
 </Page>

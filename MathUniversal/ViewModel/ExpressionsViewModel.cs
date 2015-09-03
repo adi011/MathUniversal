@@ -5,29 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
+using GalaSoft.MvvmLight.Command;
 
 namespace MathUniversal.ViewModel
 {
     public class ExpressionsViewModel:ViewModelBase
     {
-
-        private MathUniversalExpressions _expressions;
-        public MathUniversalExpressions Expressions
+        public ExpressionsViewModel()
+        {
+            _expressions = new MathExpressions();
+            _calculateCommand = new RelayCommand(CalculateExpressions);
+        }
+        private MathExpressions _expressions;
+        public ObservableCollection<Expression> Expressions
         {
             get
             {
-                return _expressions;
+                return _expressions.Expressions;
             }
 
-            set
-            {
-                if (_expressions == value)
-                {
-                    return;
-                }
+        }
+        private RelayCommand _calculateCommand;
 
-                _expressions = value;
-                RaisePropertyChanged("Expressions");
+        private void CalculateExpressions()
+        {
+            _expressions.Calculate();
+        }
+
+        public RelayCommand CalculateCommand
+        {
+            get
+            {
+                return _calculateCommand;
             }
         }
     }

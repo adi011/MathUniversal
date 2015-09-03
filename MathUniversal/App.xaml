@@ -7,5 +7,20 @@
     RequestedTheme="Light">
     <Application.Resources>
         <vm:ViewModelLocator x:Key="Locator"/>
+        <DataTemplate x:Key="ExpressionTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Text="{Binding Name,Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ExpressionString,Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Result,Mode=OneWay}" />
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>

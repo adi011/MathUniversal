@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,13 @@ namespace MathUniversal
         public MainPage()
         {
             this.InitializeComponent();
+            NewMethod();
+        }
+
+        private async void NewMethod()
+        {
+            await Task.Delay(1000);
+            Frame.Navigate(typeof(ExpressionsPage));
         }
     }
 }

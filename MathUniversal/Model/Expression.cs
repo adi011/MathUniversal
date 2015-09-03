@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using YAMP;
 
 namespace MathUniversal
 {
@@ -24,6 +25,7 @@ namespace MathUniversal
             }
         }
         private string _expressionString;
+
         public string ExpressionString
         {
             get
@@ -40,6 +42,24 @@ namespace MathUniversal
 
                 _expressionString = value;
                 RaisePropertyChanged("Expressions");
+            }
+        }
+        private Value _result;
+        public Value Result
+        {
+            get
+            {
+                return _result;
+            }
+            set
+            {
+                if (_result == value)
+                {
+                    return;
+                }
+
+                _result = value;
+                RaisePropertyChanged("Result");
             }
         }
     }
