@@ -15,7 +15,10 @@ namespace MathUniversal.ViewModel
         {
             _expressions = new MathExpressions();
             _calculateCommand = new RelayCommand(CalculateExpressions);
+            _addCommand = new RelayCommand(AddExpressions);
         }
+
+
         private MathExpressions _expressions;
         public ObservableCollection<Expression> Expressions
         {
@@ -27,17 +30,29 @@ namespace MathUniversal.ViewModel
         }
         private RelayCommand _calculateCommand;
 
-        private void CalculateExpressions()
-        {
-            _expressions.Calculate();
-        }
-
         public RelayCommand CalculateCommand
         {
             get
             {
                 return _calculateCommand;
             }
+        }
+        private RelayCommand _addCommand;
+
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return _addCommand;
+            }
+        }
+        private void CalculateExpressions()
+        {
+            _expressions.Calculate();
+        }
+        private void AddExpressions()
+        {
+            _expressions.Add();
         }
     }
 }

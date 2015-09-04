@@ -11,5 +11,6 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView ItemTemplate="{StaticResource ExpressionTemplate}" ItemsSource="{Binding Expressions}"/>    
         <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Calculate" Command="{Binding CalculateCommand}" />
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Add" Margin="10,0,0,0" Command="{Binding AddCommand}" />
     </Grid>
 </Page>

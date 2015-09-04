@@ -8,7 +8,7 @@
     <Application.Resources>
         <vm:ViewModelLocator x:Key="Locator"/>
         <DataTemplate x:Key="ExpressionTemplate">
-            <Grid>
+            <Grid Margin="20,20,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="2*" />

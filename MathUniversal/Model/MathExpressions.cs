@@ -43,12 +43,19 @@ namespace MathUniversal
             {
                 try {
                     expression.Result = Parser.Parse(expression.ExpressionString).Execute();
+                    Parser.AddVariable(expression.Name, expression.Result);
                 }
                 catch(Exception e)
                 {
-
+                    break;
                 }
             }
+        }
+
+        public void Add()
+        {
+            var a = new Expression() { Name = "Y", ExpressionString = "" };
+            Expressions.Add(a);
         }
     }
 }
