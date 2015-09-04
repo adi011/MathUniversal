@@ -26,5 +26,10 @@ namespace MathUniversal
         {
             this.InitializeComponent();
         }
+
+        private void BackNavigate(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(StartPage));
+        }
     }
 }

@@ -20,16 +20,16 @@ namespace MathUniversal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ExpressionsPage : Page
+    public sealed partial class TheSystemOfEquationsPage : Page
     {
-        public ExpressionsPage()
+        public TheSystemOfEquationsPage()
         {
             this.InitializeComponent();
         }
 
-        private void BackToStartPage(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(StartPage));
-        }
+        //private void BackNavigation(object sender, RoutedEventArgs e)
+        //{
+        //    Frame.Navigate(typeof(StartPage));
+        //}
     }
 }

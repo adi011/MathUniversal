@@ -114,9 +114,14 @@
     <Compile Include="StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TheSystemOfEquationsPage.xaml.cs">
+      <DependentUpon>TheSystemOfEquationsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ExpressionsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Model\Matrice.cs" />
+    <Compile Include="ViewModel\MatrixViewModel.cs" />
+    <Compile Include="ViewModel\TheSystemOfEquationsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TheSystemOfEquationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

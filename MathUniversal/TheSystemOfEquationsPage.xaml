@@ -1,16 +1,17 @@
 ﻿<Page
-    x:Class="MathUniversal.MatricePage"
+    x:Class="MathUniversal.TheSystemOfEquationsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MathUniversal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Source={StaticResource Locator}, Path=TheSystemOfEquations}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Temporary back navigate" Margin="77,598,0,10" Click="BackNavigate"/>
-        <TextBox Margin="125,31,171,570" Background="Aqua"/>
-        <TextBox Margin="30,31,266,570" Background="Aqua"/>
-        <TextBlock Margin="30,100,47,510" Opacity="0">invalid operation</TextBlock>
+        <TextBox Margin="10,10,10,557" Background="#999"  />
+        <TextBox Margin="10,88,10,469" Background="#999"/>
+        <Button Content="TemporaryBackNavigate" Command="{Binding SystemOfEquations}"/>
+
     </Grid>
 </Page>

@@ -37,5 +37,9 @@ namespace MathUniversal
             Frame.Navigate(typeof(MatricePage));
         }
 
+        private void NavigateToTheSystemOfEquationsPageButton(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TheSystemOfEquationsPage));
+        }
     }
 }
