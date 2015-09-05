@@ -26,25 +26,31 @@ namespace MathUniversal
                     return;
                 }
                 ParserNameChange(value);
-                _name = value;
                 RaisePropertyChanged("Name");
             }
         }
 
         private void ParserNameChange(string newName)
         {
-            if (Result != null && !String.IsNullOrEmpty(_name))
+            if (Parser.PrimaryContext.AllVariables.ContainsKey(newName))    // Variable name is already used by other expression
             {
-                try
+                Name = newName + "1";
+                return;
+            }
+            _name = newName;
+            if (Parser.PrimaryContext.AllVariables.ContainsKey(Name))
+            {
+                Parser.RemoveVariable(_name);
+            }
+            try
                 {
-                    Parser.RemoveVariable(_name);
+                if(!String.IsNullOrEmpty(newName) && Result!=null)
                     Parser.AddVariable(newName, Result);
                 }
                 catch
                 {
                     ErrorMessage = "Error: Can't change name";
                 }
-            }
         }
 
         private string _expressionString;

@@ -54,12 +54,13 @@ namespace MathUniversal
                 expression.ErrorMessage = null;
                 return;
             }
-            if (expression.Result != null)
+            if (Parser.PrimaryContext.AllVariables.ContainsKey(expression.Name))
             {
                 Parser.RemoveVariable(expression.Name);
             }
             try {
                 expression.Result = Parser.Parse(expression.ExpressionString).Execute();
+                var b = Parser.Parse(expression.ExpressionString);
                 if (!String.IsNullOrEmpty(expression.Name))
                 {
                     Parser.AddVariable(expression.Name, expression.Result);
