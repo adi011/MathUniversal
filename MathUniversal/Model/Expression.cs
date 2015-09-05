@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using System;
 using System.ComponentModel;
 using YAMP;
 
@@ -24,11 +25,28 @@ namespace MathUniversal
                 {
                     return;
                 }
-
+                ParserNameChange(value);
                 _name = value;
                 RaisePropertyChanged("Name");
             }
         }
+
+        private void ParserNameChange(string newName)
+        {
+            if (Result != null && !String.IsNullOrEmpty(_name))
+            {
+                try
+                {
+                    Parser.RemoveVariable(_name);
+                    Parser.AddVariable(newName, Result);
+                }
+                catch
+                {
+                    ErrorMessage = "Error: Can't change name";
+                }
+            }
+        }
+
         private string _expressionString;
 
         public string ExpressionString

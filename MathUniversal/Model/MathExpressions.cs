@@ -60,7 +60,10 @@ namespace MathUniversal
             }
             try {
                 expression.Result = Parser.Parse(expression.ExpressionString).Execute();
-                Parser.AddVariable(expression.Name, expression.Result);
+                if (!String.IsNullOrEmpty(expression.Name))
+                {
+                    Parser.AddVariable(expression.Name, expression.Result);
+                }
             }
             catch(Exception e)
             {
