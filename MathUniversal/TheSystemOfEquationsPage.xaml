@@ -11,7 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox Margin="10,10,10,557" Background="#999"  />
         <TextBox Margin="10,88,10,469" Background="#999"/>
-        <Button Content="TemporaryBackNavigate" Command="{Binding SystemOfEquations}"/>
+        <Button Content="TemporaryBackNavigate" Command="{Binding BackToStartCommand}"/>
 
     </Grid>
 </Page>

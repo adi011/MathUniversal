@@ -18,16 +18,16 @@ namespace MathUniversal.ViewModel
 
         public TheSystemOfEquationsViewModel()
         {
-            systemOfEquations = new RelayCommand(BackNavigation);
+            backToStartCommand = new RelayCommand(BackNavigation);
         }
 
-        private RelayCommand systemOfEquations;
+        private RelayCommand backToStartCommand;
 
-        public RelayCommand SystemOfEquations
+        public RelayCommand BackToStartCommand
         {
             get
             {
-                return systemOfEquations;
+                return backToStartCommand;
             }
         }
 

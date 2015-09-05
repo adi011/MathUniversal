@@ -15,20 +15,20 @@ namespace MathUniversal.ViewModel
 
         public MatrixViewModel()
         {
-            backToStart = new RelayCommand(BackNavigation);
+            backToStartCommand = new RelayCommand(BackNavigation);
         }
 
 
 
-        public RelayCommand BackToStart
+        public RelayCommand BackToStartCommand
         {
             get
             {
-                return backToStart;
+                return backToStartCommand;
             }
         }
 
-        private RelayCommand backToStart;
+        private RelayCommand backToStartCommand;
 
 
         void BackNavigation()

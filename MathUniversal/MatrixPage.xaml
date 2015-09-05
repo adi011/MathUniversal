@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Content="Temporary back navigate" Margin="77,598,0,10" Command="{Binding BackToStart}" />
+        <Button Content="Temporary back navigate" Margin="77,598,0,10" Command="{Binding BackToStartCommand}" />
         <TextBox Margin="125,31,171,570" Background="Aqua"/>
         <TextBox Margin="30,31,266,570" Background="Aqua"/>
         <TextBlock Margin="30,100,47,510" Opacity="0">invalid operation</TextBlock>
