@@ -60,6 +60,39 @@ namespace MathUniversal
 
                 _result = value;
                 RaisePropertyChanged("Result");
+                RaisePropertyChanged("ResultString");
+            }
+        }
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                if (_errorMessage == value)
+                {
+                    return;
+                }
+
+                _errorMessage = value;
+                RaisePropertyChanged("ErrorMessage");
+                RaisePropertyChanged("ResultString");
+            }
+        }
+        public string ResultString
+        {
+            get
+            {
+                if (Result != null)
+                {
+                    return Result.ToString();
+                }else
+                {
+                    return ErrorMessage;
+                }
             }
         }
     }

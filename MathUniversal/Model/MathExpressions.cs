@@ -47,6 +47,8 @@ namespace MathUniversal
                 }
                 catch(Exception e)
                 {
+                    expression.ErrorMessage = e.Message;
+                    expression.Result = null;
                     break;
                 }
             }
