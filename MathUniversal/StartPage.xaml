@@ -9,7 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,10">
         <Button Content="Expresion" Margin="140,66,0,530" Height="34" Click="NavigateToExpressionsPageButton"/>
-        <Button Content="Matrice" Margin="140,118,0,480" Height="32" Width="84" Click="NavigateToMatricePageButton"/>
+        <Button Content="Matrix" Margin="140,105,0,485" Height="40" Width="84" Click="NavigateToMatrixPageButton"/>
+
         <Button Content="The system of equations" Margin="140,179,-33,419" Height="32" Width="253" Click="NavigateToTheSystemOfEquationsPageButton"/>
 
     </Grid>

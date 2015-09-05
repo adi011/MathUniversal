@@ -20,16 +20,11 @@ namespace MathUniversal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MatricePage : Page
+    public sealed partial class MatrixPage : Page
     {
-        public MatricePage()
+        public MatrixPage()
         {
             this.InitializeComponent();
-        }
-
-        private void BackNavigate(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(StartPage));
         }
     }
 }

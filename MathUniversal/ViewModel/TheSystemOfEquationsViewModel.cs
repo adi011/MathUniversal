@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using MathUniversal;
+using Windows.UI.Xaml;
+using MathUniversal.Model;
 
 namespace MathUniversal.ViewModel
 {
@@ -15,7 +18,6 @@ namespace MathUniversal.ViewModel
 
         public TheSystemOfEquationsViewModel()
         {
-            something = new Matrice(2,2);
             systemOfEquations = new RelayCommand(BackNavigation);
         }
 
@@ -33,12 +35,7 @@ namespace MathUniversal.ViewModel
 
         private void BackNavigation()
         {
-            something.BackToStart();
+            Navigation.NavigationToStartPage();
         }
-
-
-        private Matrice something;
-
-
     }
 }

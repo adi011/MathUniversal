@@ -105,11 +105,12 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MatricePage.xaml.cs">
-      <DependentUpon>MatricePage.xaml</DependentUpon>
+    <Compile Include="MatrixPage.xaml.cs">
+      <DependentUpon>MatrixPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Expression.cs" />
     <Compile Include="Model\MathExpressions.cs" />
+    <Compile Include="Model\Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
@@ -119,7 +120,7 @@
     </Compile>
     <Compile Include="ViewModel\ExpressionsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="Model\Matrice.cs" />
+    <Compile Include="Model\Matrix.cs" />
     <Compile Include="ViewModel\MatrixViewModel.cs" />
     <Compile Include="ViewModel\TheSystemOfEquationsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -153,7 +154,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MatricePage.xaml">
+    <Page Include="MatrixPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

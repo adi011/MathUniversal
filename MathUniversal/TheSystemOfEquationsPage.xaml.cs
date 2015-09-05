@@ -29,7 +29,8 @@ namespace MathUniversal
 
         //private void BackNavigation(object sender, RoutedEventArgs e)
         //{
-        //    Frame.Navigate(typeof(StartPage));
+        //    MathUniversal.TheSystemOfEquationsPage aaa = new TheSystemOfEquationsPage();
+        //    aaa.Frame.Navigate(typeof(StartPage));
         //}
     }
 }

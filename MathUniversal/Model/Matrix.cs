@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace MathUniversal.ViewModel
 {
-    class Matrice : INavigationService
+    class Matrix 
     {
         public int WidthSize
         {
@@ -30,32 +30,18 @@ namespace MathUniversal.ViewModel
             }
         }
 
-        public Matrice(int width, int height)
+        public Matrix(int width, int height)
         {
             WidthSize = width;
             HeightSize = height;
         }
 
-        public void BackToStart()
-        {
-            GoBack();
-            
+      
 
-        }
+      
 
-        public void GoBack()
-        {
-            
-        }
+       
 
-        public void NavigateTo(string pageKey)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NavigateTo(string pageKey, object parameter)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

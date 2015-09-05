@@ -45,6 +45,7 @@ namespace MathUniversal.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ExpressionsViewModel>();
             SimpleIoc.Default.Register<TheSystemOfEquationsViewModel>();
+            SimpleIoc.Default.Register<MatrixViewModel>();
         }
 
         public MainViewModel Main
@@ -69,6 +70,16 @@ namespace MathUniversal.ViewModel
                 return ServiceLocator.Current.GetInstance<TheSystemOfEquationsViewModel>();
             }
         }
+
+        public MatrixViewModel Matrix
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MatrixViewModel>();
+            }
+        }
+
+
 
         public static void Cleanup()
         {

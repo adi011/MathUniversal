@@ -32,9 +32,9 @@ namespace MathUniversal
             Frame.Navigate(typeof(ExpressionsPage));
         }
 
-        private void NavigateToMatricePageButton(object sender, RoutedEventArgs e)
+        private void NavigateToMatrixPageButton(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MatricePage));
+            Frame.Navigate(typeof(MatrixPage));
         }
 
         private void NavigateToTheSystemOfEquationsPageButton(object sender, RoutedEventArgs e)
