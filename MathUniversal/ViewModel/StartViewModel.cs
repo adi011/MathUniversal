@@ -14,36 +14,36 @@ namespace MathUniversal.ViewModel
 
         public StartViewModel()
         {
-             navigateToExpressions = new RelayCommand(NavigationExpression);
-            navigateToMatrix = new RelayCommand(NavigationSystemOfEquations);
-            navigateToTheSystemOfEquations = new RelayCommand(NavigationMatrix);
+            _navigateToExpressions = new RelayCommand(NavigationExpression);
+            _navigateToMatrix = new RelayCommand(NavigationMatrix);
+            _navigateToTheSystemOfEquations = new RelayCommand(NavigationSystemOfEquations);
         }
 
-        private RelayCommand navigateToExpressions;
+        private RelayCommand _navigateToExpressions;
         public RelayCommand NavigateToExpressions
         {
             get
             {
-                return navigateToExpressions;
+                return _navigateToExpressions;
             }
         }
 
 
 
-        private RelayCommand navigateToMatrix;
+        private RelayCommand _navigateToMatrix;
         public RelayCommand NavigateToMatrix
         {
             get
             {
-                return navigateToMatrix;
+                return _navigateToMatrix;
             }
         }
-        private RelayCommand navigateToTheSystemOfEquations;
+        private RelayCommand _navigateToTheSystemOfEquations;
         public RelayCommand NavigateToTheSystemOfEquations
         {
             get
             {
-                return navigateToTheSystemOfEquations;
+                return _navigateToTheSystemOfEquations;
             }
         }
 
