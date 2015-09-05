@@ -122,6 +122,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Model\Matrix.cs" />
     <Compile Include="ViewModel\MatrixViewModel.cs" />
+    <Compile Include="ViewModel\StartViewModel.cs" />
     <Compile Include="ViewModel\TheSystemOfEquationsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
