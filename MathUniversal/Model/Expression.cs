@@ -1,10 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
+using System.ComponentModel;
 using YAMP;
 
 namespace MathUniversal
 {
     public class Expression:ObservableObject
     {
+        public Expression(PropertyChangedEventHandler OnExpressionChanged)
+        {
+            PropertyChanged += OnExpressionChanged;
+        }
         private string _name;
         public string Name
         {
@@ -21,7 +26,7 @@ namespace MathUniversal
                 }
 
                 _name = value;
-                RaisePropertyChanged("Expressions");
+                RaisePropertyChanged("Name");
             }
         }
         private string _expressionString;
@@ -41,7 +46,7 @@ namespace MathUniversal
                 }
 
                 _expressionString = value;
-                RaisePropertyChanged("Expressions");
+                RaisePropertyChanged("ExpressionString");
             }
         }
         private Value _result;

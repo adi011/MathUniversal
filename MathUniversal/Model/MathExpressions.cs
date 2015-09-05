@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using YAMP;
+using System.ComponentModel;
 
 namespace MathUniversal
 {
@@ -13,8 +14,16 @@ namespace MathUniversal
     {
         public MathExpressions()
         {
-            var first = new Expression() { Name = "X", ExpressionString = "" };
+            var first = new Expression(OnExpressionChanged) { Name = "X", ExpressionString = "" };
             Expressions.Add(first);
+        }
+
+        private void OnExpressionChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "ExpressionString")
+            {
+                ParseExpression((Expression)sender);
+            }
         }
 
         private ObservableCollection<Expression> _expressions=new ObservableCollection<Expression>();
@@ -37,26 +46,32 @@ namespace MathUniversal
                 RaisePropertyChanged("Expressions");
             }
         }
-        public void Calculate()
+        private void ParseExpression(Expression expression)
         {
-            foreach(var expression in Expressions)
+            if (String.IsNullOrEmpty(expression.ExpressionString))
             {
-                try {
-                    expression.Result = Parser.Parse(expression.ExpressionString).Execute();
-                    Parser.AddVariable(expression.Name, expression.Result);
-                }
-                catch(Exception e)
-                {
-                    expression.ErrorMessage = e.Message;
-                    expression.Result = null;
-                    break;
-                }
+                expression.Result = null;
+                expression.ErrorMessage = null;
+                return;
+            }
+            if (expression.Result != null)
+            {
+                Parser.RemoveVariable(expression.Name);
+            }
+            try {
+                expression.Result = Parser.Parse(expression.ExpressionString).Execute();
+                Parser.AddVariable(expression.Name, expression.Result);
+            }
+            catch(Exception e)
+            {
+                expression.ErrorMessage = e.Message;
+                expression.Result = null;
             }
         }
 
         public void Add()
         {
-            var a = new Expression() { Name = "Y", ExpressionString = "" };
+            var a = new Expression(OnExpressionChanged) { Name = "Y", ExpressionString = "" };
             Expressions.Add(a);
         }
     }
