@@ -14,7 +14,7 @@ namespace MathUniversal
     {
         public MathExpressions()
         {
-            var first = new Expression(OnExpressionChanged) { Name = "X", ExpressionString = "" };
+            var first = new Expression(OnExpressionChanged) { ExpressionString = "" };
             Expressions.Add(first);
         }
 
@@ -75,7 +75,7 @@ namespace MathUniversal
 
         public void Add()
         {
-            var a = new Expression(OnExpressionChanged) { Name = "Y", ExpressionString = "" };
+            var a = new Expression(OnExpressionChanged) {ExpressionString = "" };
             Expressions.Add(a);
         }
     }

@@ -22,9 +22,7 @@ namespace MathUniversal
             set
             {
                 if (_name == value)
-                {
                     return;
-                }
                 ParserNameChange(value);
                 RaisePropertyChanged("Name");
             }
@@ -32,24 +30,27 @@ namespace MathUniversal
 
         private void ParserNameChange(string newName)
         {
-            if (Parser.PrimaryContext.AllVariables.ContainsKey(newName))    // Variable name is already used by other expression
+            NameErrorMessage = null;
+            if(Parser.PrimaryContext.AllVariables.ContainsKey(newName) && newName != _name)    // Variable name is already used by other expression
             {
-                Name = newName + "1";
+                NameErrorMessage = "Error: Name already exixts";
+                _name = null;
                 return;
             }
-            _name = newName;
-            if (Parser.PrimaryContext.AllVariables.ContainsKey(Name))
-            {
-                Parser.RemoveVariable(_name);
-            }
+
             try
                 {
-                if(!String.IsNullOrEmpty(newName) && Result!=null)
-                    Parser.AddVariable(newName, Result);
+                if (_name!=null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
+                {
+                    Parser.RemoveVariable(_name);
                 }
+                _name = newName;
+                if (!String.IsNullOrEmpty(newName))
+                    Parser.AddVariable(newName, Result);
+            }
                 catch
                 {
-                    ErrorMessage = "Error: Can't change name";
+                    NameErrorMessage = "Error: Can't change name";
                 }
         }
 
@@ -86,7 +87,6 @@ namespace MathUniversal
                 {
                     return;
                 }
-
                 _result = value;
                 RaisePropertyChanged("Result");
                 RaisePropertyChanged("ResultString");
@@ -109,6 +109,19 @@ namespace MathUniversal
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
                 RaisePropertyChanged("ResultString");
+            }
+        }
+        private string _nameErrorMessage;
+        public string NameErrorMessage
+        {
+            get
+            {
+                return _nameErrorMessage;
+            }
+            set
+            {
+                _nameErrorMessage = value;
+                RaisePropertyChanged("NameErrorMessage");
             }
         }
         public string ResultString
