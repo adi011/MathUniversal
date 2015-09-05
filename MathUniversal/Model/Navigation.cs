@@ -21,7 +21,7 @@ namespace MathUniversal.Model
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(ExpressionsPage));
         }
-        public static void NavigationToMatrixPagee()
+        public static void NavigationToMatrixPage()
         {
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(MatrixPage));

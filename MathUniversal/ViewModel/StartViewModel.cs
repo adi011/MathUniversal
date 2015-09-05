@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using MathUniversal.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MathUniversal.ViewModel
 
         public StartViewModel()
         {
-           // navigateToExpressions = new RelayCommand(Calineczka1);
-            //navigateToMatrix = new RelayCommand(Calineczka2);
-            //navigateToTheSystemOfEquations = new RelayCommand(Calineczka3)
+             navigateToExpressions = new RelayCommand(NavigationExpression);
+            navigateToMatrix = new RelayCommand(NavigationSystemOfEquations);
+            navigateToTheSystemOfEquations = new RelayCommand(NavigationMatrix);
         }
 
         private RelayCommand navigateToExpressions;
@@ -46,7 +47,20 @@ namespace MathUniversal.ViewModel
             }
         }
 
+        void NavigationExpression()
+        {
+            Navigation.NavigationToExpressionsPage();
+        }
 
+        void NavigationSystemOfEquations()
+        {
+            Navigation.NavigationToTheSystemOfEquationsPage();
+        }
+
+        void NavigationMatrix()
+        {
+            Navigation.NavigationToMatrixPage();
+        }
 
 
 
