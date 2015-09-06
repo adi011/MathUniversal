@@ -12,19 +12,21 @@ namespace MathUniversal
 {
     public class MathExpressions:ObservableObject
     {
-        public MathExpressions()
+        private static MathExpressions _instance;
+        public static MathExpressions Instance
         {
-            var first = new Expression(OnExpressionChanged) { ExpressionString = "" };
-            Expressions.Add(first);
-        }
-
-        private void OnExpressionChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "ExpressionString")
+            get
             {
-                ParseExpression((Expression)sender);
+                return _instance;
             }
         }
+        public MathExpressions()
+        {
+            var first = new Expression() { ExpressionString = "" };
+            Expressions.Add(first);
+            _instance = this;
+        }
+
 
         private ObservableCollection<Expression> _expressions=new ObservableCollection<Expression>();
 
@@ -46,36 +48,11 @@ namespace MathUniversal
                 RaisePropertyChanged("Expressions");
             }
         }
-        private void ParseExpression(Expression expression)
-        {
-            if (String.IsNullOrEmpty(expression.ExpressionString))
-            {
-                expression.Result = null;
-                expression.ErrorMessage = null;
-                return;
-            }
-            if (Parser.PrimaryContext.AllVariables.ContainsKey(expression.Name))
-            {
-                Parser.RemoveVariable(expression.Name);
-            }
-            try {
-                expression.Result = Parser.Parse(expression.ExpressionString).Execute();
-                var b = Parser.Parse(expression.ExpressionString);
-                if (!String.IsNullOrEmpty(expression.Name))
-                {
-                    Parser.AddVariable(expression.Name, expression.Result);
-                }
-            }
-            catch(Exception e)
-            {
-                expression.ErrorMessage = e.Message;
-                expression.Result = null;
-            }
-        }
+
 
         public void Add()
         {
-            var a = new Expression(OnExpressionChanged) {ExpressionString = "" };
+            var a = new Expression() {ExpressionString = "" };
             Expressions.Add(a);
         }
     }

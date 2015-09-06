@@ -1,16 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using YAMP;
 
 namespace MathUniversal
 {
     public class Expression:ObservableObject
     {
-        public Expression(PropertyChangedEventHandler OnExpressionChanged)
+        public Expression()
         {
-            PropertyChanged += OnExpressionChanged;
         }
+        private List<Expression> dependentExpressions=new List<Expression>();
+        private List<Expression> dependsOnExpressions = new List<Expression>();
         private string _name;
         public string Name
         {
@@ -72,6 +75,7 @@ namespace MathUniversal
 
                 _expressionString = value;
                 RaisePropertyChanged("ExpressionString");
+                ParseExpression();
             }
         }
         private Value _result;
@@ -109,8 +113,10 @@ namespace MathUniversal
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
                 RaisePropertyChanged("ResultString");
+                NotifyDependentExpressions();
             }
         }
+
         private string _nameErrorMessage;
         public string NameErrorMessage
         {
@@ -136,6 +142,69 @@ namespace MathUniversal
                     return ErrorMessage;
                 }
             }
+        }
+
+        public void ParseExpression()
+        {
+            if (String.IsNullOrEmpty(ExpressionString))
+            {
+                Result = null;
+                ErrorMessage = null;
+                return;
+            }
+            if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))
+            {
+                Parser.RemoveVariable(Name);
+            }
+            try
+            {
+                var parser = Parser.Parse(ExpressionString);
+                var usedSymbols = parser.Context.Parser.CollectedSymbols;
+                var dependsOn = MathExpressions.Instance.Expressions.Where(s => usedSymbols.Contains(s.Name)).ToList();
+                UpdateDependentOn(dependsOn);
+                var result = parser.Execute();
+                if (!String.IsNullOrEmpty(Name))
+                {
+                    Parser.AddVariable(Name, result);
+                }
+                Result = result;
+            }
+            catch (Exception e)
+            {
+                ErrorMessage = e.Message;
+                Result = null;
+            }
+            finally
+            {
+                NotifyDependentExpressions();
+            }
+        }
+
+        private void UpdateDependentOn(List<Expression> dependsOn)
+        {
+            foreach(var e in dependsOnExpressions.Except(dependsOn))
+            {
+                e.RemoveDependentExpression(this);
+            }
+            foreach (var e in dependsOn.Except(dependsOnExpressions))
+            {
+                e.AddDependentExpression(this);
+            }
+        }
+
+        public void AddDependentExpression(Expression e)
+        {
+            if(!dependentExpressions.Contains(e))
+            dependentExpressions.Add(e);
+        }
+        public void RemoveDependentExpression(Expression e)
+        {
+            dependentExpressions.Remove(e);
+        }
+
+        private void NotifyDependentExpressions()
+        {
+            dependentExpressions.ForEach((e) => e.ParseExpression());
         }
     }
 }
