@@ -68,7 +68,9 @@ namespace MathUniversal
                     dependentExpressions.Add(e);
                 }
             }
-            NotifyDependentExpressions();
+            var sources = new List<Expression>();
+            sources.Add(this);
+            NotifyDependentExpressions(sources);
         }
 
         private string _expressionString;
@@ -127,7 +129,8 @@ namespace MathUniversal
                 _errorMessage = value;
                 RaisePropertyChanged("ErrorMessage");
                 RaisePropertyChanged("ResultString");
-                NotifyDependentExpressions();
+                var sources = new List<Expression>();
+                sources.Add(this);
             }
         }
 
@@ -158,13 +161,15 @@ namespace MathUniversal
             }
         }
 
-        public void ParseExpression()
+        public bool ParseExpression(List<Expression> sources=null)
         {
+            if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")
+                return false;
             if (String.IsNullOrEmpty(ExpressionString))
             {
                 Result = null;
                 ErrorMessage = null;
-                return;
+                return true;
             }
             if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))
             {
@@ -176,39 +181,56 @@ namespace MathUniversal
                 var usedSymbols = parser.Context.Parser.CollectedSymbols;
                 var dependsOn = MathExpressions.Instance.Expressions.Where(s => usedSymbols.Contains(s.Name)).ToList();
                 UpdateDependentOn(dependsOn);
+                if (sources == null)
+                    sources = new List<Expression>();
+                if (sources.Contains(this))
+                {
+                    Result = null;
+                    ErrorMessage = "Error. Infinite dependecy loop.";
+                    return false;
+                }
+                else
+                {
+                    sources.Add(this);
+                }
                 var result = parser.Execute();
                 if (!String.IsNullOrEmpty(Name))
                 {
                     Parser.AddVariable(Name, result);
                 }
                 Result = result;
+                ErrorMessage = null;
+                return true;
             }
             catch (Exception e)
             {
                 ErrorMessage = e.Message;
                 Result = null;
+                return true;
             }
             finally
             {
-                NotifyDependentExpressions();
+                NotifyDependentExpressions(sources);
             }
         }
 
         private void UpdateDependentOn(List<Expression> dependsOn)
         {
-            foreach(var e in dependsOnExpressions.Except(dependsOn))
+            foreach(var e in dependsOnExpressions.Except(dependsOn).ToArray())
             {
                 e.RemoveDependentExpression(this);
+                dependsOnExpressions.Remove(e);
             }
-            foreach (var e in dependsOn.Except(dependsOnExpressions))
+            foreach (var e in dependsOn.Except(dependsOnExpressions).ToArray())
             {
                 e.AddDependentExpression(this);
+                dependsOnExpressions.Add(e);
             }
         }
 
         public void AddDependentExpression(Expression e)
         {
-            if(!dependentExpressions.Contains(e))
+            if(e!=this && !dependentExpressions.Contains(e))
             dependentExpressions.Add(e);
         }
         public void RemoveDependentExpression(Expression e)
@@ -216,9 +238,16 @@ namespace MathUniversal
             dependentExpressions.Remove(e);
         }
 
-        private void NotifyDependentExpressions()
+        private void NotifyDependentExpressions(List<Expression> sources)
         {
-            dependentExpressions.ForEach((e) => e.ParseExpression());
+            dependentExpressions.ForEach((e) => 
+            {
+                if(!e.ParseExpression(sources))
+                {
+                    Result = null;
+                    ErrorMessage = "Error. Infinite dependency loop";
+                }
+             });
         }
     }
 }
