@@ -9,9 +9,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox Margin="10,10,10,557" Background="#999"  />
-        <TextBox Margin="10,88,10,469" Background="#999"/>
-        <Button Content="TemporaryBackNavigate" Command="{Binding BackToStartCommand}"/>
-
+        <Grid Background="#3F53ff">
+            <TextBox Margin="10,32,103,587" Background="#999"  />
+            <TextBox Margin="10,88,103,530" Background="#999"/>
+            <Button Content="TemporaryBackNavigate" Command="{Binding BackToStartCommand}"/>
+        </Grid>
     </Grid>
 </Page>
