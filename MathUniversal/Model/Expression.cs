@@ -28,6 +28,7 @@ namespace MathUniversal
                     return;
                 ParserNameChange(value);
                 RaisePropertyChanged("Name");
+                searchDependencies();
             }
         }
 
@@ -40,7 +41,7 @@ namespace MathUniversal
                 _name = null;
                 return;
             }
-
+            dependentExpressions.Clear();   // After changing name dependencies change too.
             try
                 {
                 if (_name!=null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
@@ -55,6 +56,19 @@ namespace MathUniversal
                 {
                     NameErrorMessage = "Error: Can't change name";
                 }
+        }
+
+        private void searchDependencies()
+        {
+            foreach(var e in MathExpressions.Instance.Expressions)
+            {
+                var parse = Parser.Parse(e.ExpressionString);
+                if (parse.Context.Parser.CollectedSymbols.Contains(this.Name))
+                {
+                    dependentExpressions.Add(e);
+                }
+            }
+            NotifyDependentExpressions();
         }
 
         private string _expressionString;
