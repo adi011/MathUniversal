@@ -167,38 +167,29 @@ namespace MathUniversal
 
         public bool ParseExpression(List<Expression> sources=null)
         {
-            if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")
+            if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")     // Detects infinite loop.
                 return false;
-            if (String.IsNullOrEmpty(ExpressionString))
-            {
-                Result = null;
-                ErrorMessage = null;
-                return true;
-            }
-            if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))
-            {
-                Parser.RemoveVariable(Name);
-            }
             try
             {
+                if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))    // Remove old value from parser
+                {
+                    Parser.RemoveVariable(Name);
+                }
                 var parser = Parser.Parse(ExpressionString);
                 var usedSymbols = parser.Context.Parser.CollectedSymbols;
-                var dependsOn = MathExpressions.Instance.Expressions.Where(s => usedSymbols.Contains(s.Name)).ToList();
+                var dependsOn = MathExpressions.Instance.Expressions.Where(s => usedSymbols.Contains(s.Name)).ToList(); // Get expressions that are used by this expression.
                 UpdateDependentOn(dependsOn);
                 if (sources == null)
                     sources = new List<Expression>();
-                if (sources.Contains(this))
+                if (sources.Contains(this))     // Detecs infinite dependency loop.
                 {
                     Result = null;
                     ErrorMessage = "Error. Infinite dependecy loop.";
                     return false;
                 }
-                else
-                {
-                    sources.Add(this);
-                }
+                sources.Add(this);
                 var result = parser.Execute();
-                if (!String.IsNullOrEmpty(Name))
+                if (!String.IsNullOrEmpty(Name))    // Variable must be named to be aded to parser
                 {
                     Parser.AddVariable(Name, result);
                 }

@@ -22,7 +22,7 @@ namespace MathUniversal
         }
         public MathExpressions()
         {
-            var first = new Expression() { ExpressionString = "" };
+            var first = new Expression();
             Expressions.Add(first);
             _instance = this;
         }
@@ -52,7 +52,7 @@ namespace MathUniversal
 
         public void Add()
         {
-            var a = new Expression() {ExpressionString = "" };
+            var a = new Expression();
             Expressions.Add(a);
         }
     }
