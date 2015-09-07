@@ -41,7 +41,6 @@ namespace MathUniversal
                 _name = null;
                 return;
             }
-            dependentExpressions.Clear();   // After changing name dependencies change too.
             try
                 {
                 if (_name!=null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
@@ -56,6 +55,11 @@ namespace MathUniversal
                 {
                     NameErrorMessage = "Error: Can't change name";
                 }
+            finally
+            {
+                dependentExpressions.ForEach((e) => e.ParseExpression());
+                dependentExpressions.Clear();   // After changing name dependencies change too.
+            }
         }
 
         private void searchDependencies()
