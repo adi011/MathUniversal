@@ -10,25 +10,26 @@ namespace MathUniversal.Model
 {
     public static class Navigation
     {
+        private static Frame rootFrame = Window.Current.Content as Frame;
         public static void NavigationToStartPage()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            //Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(StartPage));
         }
 
         public static void NavigationToExpressionsPage()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            //Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(ExpressionsPage));
         }
         public static void NavigationToMatrixPage()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            //Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(MatrixPage));
         }
         public static void NavigationToTheSystemOfEquationsPage()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            //Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(TheSystemOfEquationsPage));
         }
 
