@@ -10,9 +10,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <TextBox Margin="10,32,103,587" Background="#999"  />
-            <TextBox Margin="10,88,103,530" Background="#999"/>
-            <Button Content="TemporaryBackNavigate" Command="{Binding BackToStartCommand}"/>
+            <TextBox Margin="10,32,103,587" Foreground="#8B97FF" Background="#464C7F"  />
+            <TextBox Margin="10,88,103,530" Foreground="#8B97FF" Background="#464C7F"/>
+            <Button Content="TemporaryBackNavigate" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}"/>
         </Grid>
     </Grid>
 </Page>

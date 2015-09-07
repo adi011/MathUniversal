@@ -9,9 +9,9 @@
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,10">
         <Grid Background="#3F53ff">
-        <Button Content="Expresion" Margin="140,66,0,530" Height="34" Command="{Binding NavigateToExpressions}"/>
-        <Button Content="Matrix" Margin="140,105,0,485" Height="40" Width="84" Command="{Binding NavigateToMatrix}"/>
-        <Button Content="The system of equations" Margin="140,179,-33,419" Height="32" Width="253" Command="{Binding NavigateToTheSystemOfEquations}"/>
+            <Button Content="Expresion" Margin="140,66,0,530" Height="34" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToExpressions}" />
+            <Button Content="Matrix" Margin="140,105,0,485" Height="40" Width="84" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToMatrix}" />
+            <Button Content="The system of equations" Margin="140,179,-33,419" Height="32" Width="253" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToTheSystemOfEquations}"/>
         </Grid>
     </Grid>
 </Page>

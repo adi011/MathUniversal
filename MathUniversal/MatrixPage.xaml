@@ -10,9 +10,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <Button Content="Temporary back navigate" Margin="77,598,0,10" Command="{Binding BackToStartCommand}" />
-            <TextBox Margin="125,31,171,570" Background="Aqua"/>
-            <TextBox Margin="30,31,266,570" Background="Aqua"/>
+            <Button Content="Temporary back navigate" Margin="77,598,0,10" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}" />
+            <TextBox Margin="125,31,171,570" Foreground="#8B97FF" Background="#464C7F"/>
+            <TextBox Margin="30,31,266,570" Foreground="#8B97FF" Background="#464C7F"/>
             <TextBlock Margin="30,100,47,510" Opacity="0">invalid operation</TextBlock>
         </Grid>
         
