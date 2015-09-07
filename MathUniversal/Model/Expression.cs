@@ -90,9 +90,7 @@ namespace MathUniversal
                     dependentExpressions.Add(e);
                 }
             }
-            var sources = new List<Expression>();
-            sources.Add(this);
-            NotifyDependentExpressions(sources);
+            NotifyDependentExpressions(this);
         }
 
         private string _expressionString;
@@ -183,10 +181,10 @@ namespace MathUniversal
             }
         }
 
-        public bool ParseExpression(List<Expression> sources=null)
+        public void ParseExpression(Expression source=null)
         {
-            if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")     // Detects infinite loop.
-                return false;
+           // if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")     // Detects infinite loop.
+           //     return false;
             try
             {
                 if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))    // Remove old value from parser
@@ -197,15 +195,15 @@ namespace MathUniversal
                 var usedSymbols = parser.Context.Parser.CollectedSymbols;
                 var dependsOn = MathExpressions.Instance.Expressions.Where(s => usedSymbols.Contains(s.Name)).ToList(); // Get expressions that are used by this expression.
                 UpdateDependentOn(dependsOn);
-                if (sources == null)
-                    sources = new List<Expression>();
-                if (sources.Contains(this))     // Detecs infinite dependency loop.
+                if (source == this)     // Detecs infinite dependency loop.
                 {
                     Result = null;
                     ErrorMessage = "Error. Infinite dependecy loop.";
-                    return false;
+                    NotifyDependencyLoop();
+                    return;
                 }
-                sources.Add(this);
+                if (source == null)
+                    source = this;
                 var result = parser.Execute();
                 if (!String.IsNullOrEmpty(Name))    // Variable must be named to be aded to parser
                 {
@@ -213,17 +211,13 @@ namespace MathUniversal
                 }
                 Result = result;
                 ErrorMessage = null;
-                return true;
+                NotifyDependentExpressions(source);
             }
             catch (Exception e)
             {
                 ErrorMessage = e.Message;
                 Result = null;
-                return true;
-            }
-            finally
-            {
-                NotifyDependentExpressions(sources);
+                NotifyDependentExpressions(source);
             }
         }
 
@@ -251,16 +245,33 @@ namespace MathUniversal
             dependentExpressions.Remove(e);
         }
 
-        private void NotifyDependentExpressions(List<Expression> sources)
+        private void NotifyDependentExpressions(Expression source)
         {
-            dependentExpressions.ForEach((e) => 
+            foreach(Expression e in dependentExpressions.ToList())
             {
-                if(!e.ParseExpression(sources))
+                e.ParseExpression(source);
+             }
+        }
+        public void NotifyDependencyLoop(Expression source)
+        {
+            if (source != this)
+            {
+                Result = null;
+                ErrorMessage = "Error. Infinite dependecy loop.";
+                foreach (Expression e in dependentExpressions.ToList())
                 {
-                    Result = null;
-                    ErrorMessage = "Error. Infinite dependency loop";
+                    e.NotifyDependencyLoop(source);
                 }
-             });
+            }
+        }
+        private void NotifyDependencyLoop()
+        {
+            Result = null;
+            ErrorMessage = "Error. Infinite dependecy loop.";
+            foreach (Expression e in dependentExpressions.ToList())
+            {
+                e.NotifyDependencyLoop(this);
+            }
         }
     }
 }
