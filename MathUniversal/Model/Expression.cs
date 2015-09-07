@@ -41,6 +41,12 @@ namespace MathUniversal
                 _name = null;
                 return;
             }
+            if (!IsValidName(newName))
+            {
+                NameErrorMessage = "Error: Invalid name.";
+                _name = null;
+                return;
+            }
             try
                 {
                 if (_name!=null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
@@ -60,6 +66,18 @@ namespace MathUniversal
                 dependentExpressions.ForEach((e) => e.ParseExpression());
                 dependentExpressions.Clear();   // After changing name dependencies change too.
             }
+        }
+
+        private bool IsValidName(string newName)
+        {
+            if (String.IsNullOrEmpty(newName))  // Can be not named
+                return true;
+            if (!char.IsLetter(newName.FirstOrDefault()))   // First char must be a letter
+                return false;
+            if (newName.All(c => Char.IsLetterOrDigit(c)))  // All chars must be letter or digit
+                return true;
+            else
+                return false;
         }
 
         private void searchDependencies()
