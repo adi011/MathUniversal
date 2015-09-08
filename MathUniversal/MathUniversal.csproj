@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Model\Expression.cs" />
     <Compile Include="Model\MathExpressions.cs" />
+    <Compile Include="Model\MathMatrix.cs" />
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartPage.xaml.cs">

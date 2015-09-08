@@ -16,6 +16,8 @@ namespace MathUniversal.ViewModel
         public MatrixViewModel()
         {
             _backToStartCommand = new RelayCommand(BackNavigation);
+            _introduceSize = new RelayCommand(DrawMatrix);
+            _toCount = new RelayCommand(CountMatrix);
         }
 
 
@@ -34,6 +36,33 @@ namespace MathUniversal.ViewModel
             Navigation.NavigationToStartPage();
         }
 
+        private RelayCommand _introduceSize;
+        public RelayCommand IntroduceSize
+        {
+            get
+            {
+                return _introduceSize;
+            }
+        }
+
+        void DrawMatrix()
+        {
+            //Calineczka1
+        }
+
+        private RelayCommand _toCount;
+        public RelayCommand ToCount
+        {
+            get
+            {
+                return _toCount;
+            }
+        }
+
+        void CountMatrix()
+        {
+            //Calineczka2
+        }
 
 
     }

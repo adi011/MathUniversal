@@ -14,6 +14,9 @@
             <TextBox Margin="125,31,171,570" Foreground="#8B97FF" Background="#464C7F"/>
             <TextBox Margin="30,31,266,570" Foreground="#8B97FF" Background="#464C7F"/>
             <TextBlock Margin="30,100,47,510" Opacity="0">invalid operation</TextBlock>
+            <Grid Margin="40,40">
+
+            </Grid>
         </Grid>
         
     </Grid>
