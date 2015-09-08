@@ -10,9 +10,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <TextBox Margin="10,32,103,587" Foreground="#8B97FF" Background="#464C7F"  />
-            <TextBox Margin="10,88,103,530" Foreground="#8B97FF" Background="#464C7F"/>
-            <Button Content="TemporaryBackNavigate" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}"/>
+            <ListView Margin="42,10,112,354">
+                <TextBox Foreground="#8B97FF" Background="#464C7F" Width="145"  />
+                <TextBox Foreground="#8B97FF" Background="#464C7F" Width="145"/>
+            </ListView>
+            <Button Content="TemporaryBackNavigate" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}" Margin="42,577,0,31" Width="125"/>
+            <Button Margin="74,523,0,85" Foreground="#8B97FF" Background="#464C7F">Add</Button>
         </Grid>
     </Grid>
 </Page>

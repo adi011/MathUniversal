@@ -6,14 +6,40 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     DataContext="{Binding Source={StaticResource Locator}, Path=Matrix}"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Height="641.385" Width="414.026">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
             <Button Content="Temporary back navigate" Margin="77,598,0,10" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}" />
-            <TextBox Margin="125,31,171,570" Foreground="#8B97FF" Background="#464C7F"/>
-            <TextBox Margin="30,31,266,570" Foreground="#8B97FF" Background="#464C7F"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,600">
+                <TextBox Margin="20,0,20,0" Foreground="#8B97FF" Background="#464C7F"/>
+                <TextBox Margin="20,0,20,0" Foreground="#8B97FF" Background="#464C7F"/>
+            </StackPanel>
             <TextBlock Margin="30,100,47,510" Opacity="0">invalid operation</TextBlock>
+            <StackPanel Orientation="Vertical" Margin="40,40,10,40">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="31">
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="31">
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="31">
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                    <TextBox></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <Button Margin="169,561,0,47" >Add Matrix</Button>
         </Grid>
         
     </Grid>
