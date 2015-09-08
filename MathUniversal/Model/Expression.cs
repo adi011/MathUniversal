@@ -183,8 +183,6 @@ namespace MathUniversal
 
         public void ParseExpression(Expression source=null)
         {
-           // if (sources!=null && ErrorMessage == "Error. Infinite dependecy loop.")     // Detects infinite loop.
-           //     return false;
             try
             {
                 if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))    // Remove old value from parser
@@ -252,25 +250,18 @@ namespace MathUniversal
                 e.ParseExpression(source);
              }
         }
-        public void NotifyDependencyLoop(Expression source)
+        public void NotifyDependencyLoop(Expression source=null)
         {
-            if (source != this)
+            if (source==null || source != this)
             {
+                if(source==null)
+                    source = this;
                 Result = null;
                 ErrorMessage = "Error. Infinite dependecy loop.";
                 foreach (Expression e in dependentExpressions.ToList())
                 {
                     e.NotifyDependencyLoop(source);
                 }
-            }
-        }
-        private void NotifyDependencyLoop()
-        {
-            Result = null;
-            ErrorMessage = "Error. Infinite dependecy loop.";
-            foreach (Expression e in dependentExpressions.ToList())
-            {
-                e.NotifyDependencyLoop(this);
             }
         }
     }
