@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,35 +9,26 @@ using Windows.UI.Xaml.Controls;
 
 namespace MathUniversal.ViewModel
 {
-    class Matrix 
+    class Matrix: ObservableObject
     {
-        public int WidthSize
+       
+        public Matrix()
         {
-            get;
-            set;
-        } 
 
-        public int HeightSize
-        {
-            get;
-            set;
         }
 
-        public string CurrentPageKey
+        private List<int> _values;
+        List<int> Values
         {
             get
             {
-                throw new NotImplementedException();
+                return _values;
+            }
+            set
+            {
+
             }
         }
-
-        public Matrix(int width, int height)
-        {
-            WidthSize = width;
-            HeightSize = height;
-        }
-
-      
 
       
 

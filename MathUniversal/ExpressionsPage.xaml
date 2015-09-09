@@ -11,7 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
             <ListView ItemTemplate="{StaticResource ExpressionTemplate}" ItemsSource="{Binding Expressions}" />
-            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Add" Margin="10,0,0,0" Command="{Binding AddCommand}"  Foreground="#8B97FF" Background="#464C7F"/>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Add" Margin="10,0,0,0" Foreground="#8B97FF" Background="#464C7F" Command="{Binding AddCommand}"/>
             <Button Content="Temporary back navigate" Margin="164,493,0,115" Click="BackToStartPage" Foreground="#8B97FF" Background="#464C7F" />
         </Grid>
     </Grid>

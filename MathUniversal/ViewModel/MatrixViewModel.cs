@@ -15,10 +15,47 @@ namespace MathUniversal.ViewModel
 
         public MatrixViewModel()
         {
+           // panel = new MatrixPanel();
             _backToStartCommand = new RelayCommand(BackNavigation);
-            _introduceSize = new RelayCommand(DrawMatrix);
-            _toCount = new RelayCommand(CountMatrix);
+            //_introduceSize = new RelayCommand(DrawMatrix);
+            //_toCount = new RelayCommand(CountMatrix);
+
+            _addMatrixPanel = new RelayCommand(AddPanel);
         }
+
+
+
+        private RelayCommand _addMatrixPanel;
+
+        public RelayCommand AddMatrixPanel
+        {
+            get
+            {
+                return _addMatrixPanel;
+            }
+        }
+
+
+
+
+
+        void AddPanel()
+        {
+           // panel.Add();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         private RelayCommand _backToStartCommand;

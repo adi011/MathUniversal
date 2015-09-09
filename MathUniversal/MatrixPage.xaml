@@ -9,15 +9,15 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="PanelMatrix">
+        <DataTemplate x:Key="PanelMatrixTemplate">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="x:"/>
-                    <TextBox/>   
+                    <TextBox Text="{Binding MatrixHeight,Mode=OneWay}"/>   
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="y:"/>
-                    <TextBox/>
+                    <TextBox Text="{Binding MatrixWidth,Mode=OneWay}"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
@@ -56,9 +56,9 @@
                     <TextBox></TextBox>
                 </StackPanel>
             </StackPanel>-->
-            <ListView ItemTemplate="{StaticResource PanelMatrix}" Margin="0,0,0,131"/>
+            <ListView ItemTemplate="{StaticResource PanelMatrixTemplate}" Margin="0,0,0,131"/>
 
-                <Button Margin="169,561,0,47" >Add Matrix</Button>
+            <Button Margin="169,561,0,47" Content="Add Matrix" Command="{Binding AddMatrixPanel}" /> 
         </Grid>
         
     </Grid>
