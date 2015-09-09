@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,12 +8,13 @@ using YAMP;
 
 namespace MathUniversal
 {
-    public class Expression:ObservableObject
+    public class Expression : ObservableObject
     {
         public Expression()
         {
+            _removeCommand = new RelayCommand(() => Remove());
         }
-        private List<Expression> dependentExpressions=new List<Expression>();
+        private List<Expression> dependentExpressions = new List<Expression>();
         private List<Expression> dependsOnExpressions = new List<Expression>();
         private string _name;
         public string Name
@@ -35,7 +37,7 @@ namespace MathUniversal
         private void ParserNameChange(string newName)
         {
             NameErrorMessage = null;
-            if(Parser.PrimaryContext.AllVariables.ContainsKey(newName) && newName != _name)    // Variable name is already used by other expression
+            if (Parser.PrimaryContext.AllVariables.ContainsKey(newName) && newName != _name)    // Variable name is already used by other expression
             {
                 NameErrorMessage = "Error: Name already exixts";
                 _name = null;
@@ -48,8 +50,8 @@ namespace MathUniversal
                 return;
             }
             try
-                {
-                if (_name!=null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
+            {
+                if (_name != null && Parser.PrimaryContext.AllVariables.ContainsKey(_name))
                 {
                     Parser.RemoveVariable(_name);
                 }
@@ -57,10 +59,10 @@ namespace MathUniversal
                 if (!String.IsNullOrEmpty(newName))
                     Parser.AddVariable(newName, Result);
             }
-                catch
-                {
-                    NameErrorMessage = "Error: Can't change name";
-                }
+            catch
+            {
+                NameErrorMessage = "Error: Can't change name";
+            }
             finally
             {
                 dependentExpressions.ForEach((e) => e.ParseExpression());
@@ -82,7 +84,7 @@ namespace MathUniversal
 
         private void searchDependencies()
         {
-            foreach(var e in MathExpressions.Instance.Expressions)
+            foreach (var e in MathExpressions.Instance.Expressions)
             {
                 var parse = Parser.Parse(e.ExpressionString);
                 if (parse.Context.Parser.CollectedSymbols.Contains(this.Name))
@@ -155,6 +157,8 @@ namespace MathUniversal
         }
 
         private string _nameErrorMessage;
+        private RelayCommand _removeCommand;
+
         public string NameErrorMessage
         {
             get
@@ -174,14 +178,15 @@ namespace MathUniversal
                 if (Result != null)
                 {
                     return Result.ToString();
-                }else
+                }
+                else
                 {
                     return ErrorMessage;
                 }
             }
         }
 
-        public void ParseExpression(Expression source=null)
+        public void ParseExpression(Expression source = null)
         {
             try
             {
@@ -221,7 +226,7 @@ namespace MathUniversal
 
         private void UpdateDependentOn(List<Expression> dependsOn)
         {
-            foreach(var e in dependsOnExpressions.Except(dependsOn).ToArray())
+            foreach (var e in dependsOnExpressions.Except(dependsOn).ToArray())
             {
                 e.RemoveDependentExpression(this);
                 dependsOnExpressions.Remove(e);
@@ -235,8 +240,8 @@ namespace MathUniversal
 
         public void AddDependentExpression(Expression e)
         {
-            if(e!=this && !dependentExpressions.Contains(e))
-            dependentExpressions.Add(e);
+            if (e != this && !dependentExpressions.Contains(e))
+                dependentExpressions.Add(e);
         }
         public void RemoveDependentExpression(Expression e)
         {
@@ -245,16 +250,16 @@ namespace MathUniversal
 
         private void NotifyDependentExpressions(Expression source)
         {
-            foreach(Expression e in dependentExpressions.ToList())
+            foreach (Expression e in dependentExpressions.ToList())
             {
                 e.ParseExpression(source);
-             }
+            }
         }
-        public void NotifyDependencyLoop(Expression source=null)
+        public void NotifyDependencyLoop(Expression source = null)
         {
-            if (source==null || source != this)
+            if (source == null || source != this)
             {
-                if(source==null)
+                if (source == null)
                     source = this;
                 Result = null;
                 ErrorMessage = "Error. Infinite dependecy loop.";
@@ -264,5 +269,28 @@ namespace MathUniversal
                 }
             }
         }
+        public void PrepareToRemove()
+        {
+            if (!String.IsNullOrEmpty(Name) && Parser.PrimaryContext.AllVariables.ContainsKey(Name))    // Remove variable from parser
+            {
+                Parser.RemoveVariable(Name);
+            }
+            NotifyDependentExpressions(this);
+            foreach (Expression e in dependsOnExpressions)
+            {
+                e.RemoveDependentExpression(this);
+            }
+            dependentExpressions = null;
+            dependsOnExpressions = null;
+            Result = null;
+        }
+
+
+        private void Remove()
+        {
+            PrepareToRemove();
+            MathExpressions.Instance.Expressions.Remove(this);
+        }
+        public RelayCommand RemoveCommand { get { return _removeCommand; } }
     }
 }
