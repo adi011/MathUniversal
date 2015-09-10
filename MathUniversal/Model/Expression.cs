@@ -12,7 +12,7 @@ namespace MathUniversal
     {
         public Expression()
         {
-            _removeCommand = new RelayCommand(() => Remove());
+            RemoveCommand = new RelayCommand(() => Remove());
         }
         private List<Expression> dependentExpressions = new List<Expression>();
         private List<Expression> dependsOnExpressions = new List<Expression>();
@@ -29,10 +29,11 @@ namespace MathUniversal
                 if (_name == value)
                     return;
                 ParserNameChange(value);
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(nameof(Name));
                 searchDependencies();
             }
         }
+        public RelayCommand RemoveCommand { get; }
 
         private void ParserNameChange(string newName)
         {
@@ -112,7 +113,7 @@ namespace MathUniversal
                 }
 
                 _expressionString = value;
-                RaisePropertyChanged("ExpressionString");
+                RaisePropertyChanged(nameof(ExpressionString));
                 ParseExpression();
             }
         }
@@ -130,8 +131,8 @@ namespace MathUniversal
                     return;
                 }
                 _result = value;
-                RaisePropertyChanged("Result");
-                RaisePropertyChanged("ResultString");
+                RaisePropertyChanged(nameof(Result));
+                RaisePropertyChanged(nameof(ResultString));
             }
         }
         private string _errorMessage;
@@ -149,15 +150,14 @@ namespace MathUniversal
                 }
 
                 _errorMessage = value;
-                RaisePropertyChanged("ErrorMessage");
-                RaisePropertyChanged("ResultString");
+                RaisePropertyChanged(nameof(ErrorMessage));
+                RaisePropertyChanged(nameof(ResultString));
                 var sources = new List<Expression>();
                 sources.Add(this);
             }
         }
 
         private string _nameErrorMessage;
-        private RelayCommand _removeCommand;
 
         public string NameErrorMessage
         {
@@ -168,23 +168,10 @@ namespace MathUniversal
             set
             {
                 _nameErrorMessage = value;
-                RaisePropertyChanged("NameErrorMessage");
+                RaisePropertyChanged(nameof(NameErrorMessage));
             }
         }
-        public string ResultString
-        {
-            get
-            {
-                if (Result != null)
-                {
-                    return Result.ToString();
-                }
-                else
-                {
-                    return ErrorMessage;
-                }
-            }
-        }
+        public string ResultString => Result!=null  ?   Result.ToString()   :   ErrorMessage;
 
         public void ParseExpression(Expression source = null)
         {
@@ -291,6 +278,5 @@ namespace MathUniversal
             PrepareToRemove();
             MathExpressions.Instance.Expressions.Remove(this);
         }
-        public RelayCommand RemoveCommand { get { return _removeCommand; } }
     }
 }
