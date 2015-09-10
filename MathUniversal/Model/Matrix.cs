@@ -12,10 +12,17 @@ namespace MathUniversal.ViewModel
     class Matrix: ObservableObject
     {
        
+
+
+
         public Matrix()
         {
 
         }
+
+
+
+
 
         private List<int> _values;
         List<int> Values

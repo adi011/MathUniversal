@@ -56,7 +56,7 @@
                     <TextBox></TextBox>
                 </StackPanel>
             </StackPanel>-->
-            <ListView ItemTemplate="{StaticResource PanelMatrixTemplate}" Margin="0,0,0,131"/>
+            <ListView ItemTemplate="{StaticResource PanelMatrixTemplate}" ItemsSource="{Binding MatrixPanels}" Margin="0,0,0,131"/>
 
             <Button Margin="169,561,0,47" Content="Add Matrix" Command="{Binding AddMatrixPanel}" /> 
         </Grid>

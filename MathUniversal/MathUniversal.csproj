@@ -112,6 +112,7 @@
     <Compile Include="Model\MathExpressions.cs" />
     <Compile Include="Model\MathMatrix.cs" />
     <Compile Include="Model\MatrixPanel.cs" />
+    <Compile Include="Model\MergeMatrix.cs" />
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartPage.xaml.cs">

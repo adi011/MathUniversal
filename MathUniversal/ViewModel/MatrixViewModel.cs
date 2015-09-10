@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace MathUniversal.ViewModel
 {
@@ -15,7 +16,7 @@ namespace MathUniversal.ViewModel
 
         public MatrixViewModel()
         {
-           // panel = new MatrixPanel();
+             _panel = new MatrixPanel();
             _backToStartCommand = new RelayCommand(BackNavigation);
             //_introduceSize = new RelayCommand(DrawMatrix);
             //_toCount = new RelayCommand(CountMatrix);
@@ -34,6 +35,23 @@ namespace MathUniversal.ViewModel
                 return _addMatrixPanel;
             }
         }
+
+
+        private MatrixPanel _panel;
+        //public ObservableCollection<MatrixPanel> Panels
+        //{
+
+        //    get
+        //    {
+        //        return _panel;
+        //    }
+            
+
+
+        //}
+
+
+
 
 
 
