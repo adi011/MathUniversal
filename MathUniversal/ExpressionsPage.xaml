@@ -10,7 +10,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <ListView HorizontalAlignment="Center" ItemTemplate="{StaticResource ExpressionTemplate}" ItemsSource="{Binding Expressions}"  />
+            <ListView ItemTemplate="{StaticResource ExpressionTemplate}" ItemsSource="{Binding Expressions}"  >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
             <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Add" Margin="10,0,0,0" Foreground="#8B97FF" Background="#464C7F" Command="{Binding AddCommand}"/>
             <Button Content="Temporary back navigate" Margin="164,608,0,0" Click="BackToStartPage" Foreground="#8B97FF" Background="#464C7F" />
         </Grid>
