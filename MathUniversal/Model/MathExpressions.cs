@@ -54,6 +54,7 @@ namespace MathUniversal
         {
             var a = new Expression();
             Expressions.Add(a);
+
         }
     }
 }

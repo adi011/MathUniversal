@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace MathUniversal.Model
 {
-    class MatrixPanel:ObservableObject
+    public class MatrixPanel:ObservableObject
     {
         public MatrixPanel()
         {
-
+            
+             
         }
         private string _matrixHeight;
         public string MatrixHeight
@@ -20,6 +21,11 @@ namespace MathUniversal.Model
             {
                 return _matrixHeight;
             }
+            set
+            {
+                _matrixHeight = value;
+                RaisePropertyChanged("MatrixHeight");
+            }
         }
         private string _matrixWidth;
         public string MatrixWidth
@@ -27,6 +33,11 @@ namespace MathUniversal.Model
             get
             {
                 return _matrixWidth;
+            }
+            set
+            {
+                _matrixWidth = value;
+                RaisePropertyChanged("MatrixWidth");
             }
         }
 

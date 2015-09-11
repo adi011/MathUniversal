@@ -13,8 +13,8 @@ namespace MathUniversal.Model
 
         public MergeMatrix()
         {
-            MatrixPanel panel = new MatrixPanel();
-            Panels.Add(panel);
+            MatrixPanel firstPanel = new MatrixPanel();
+            Panels.Add(firstPanel);
             _thisInstance = this;
         }
 
@@ -40,7 +40,7 @@ namespace MathUniversal.Model
                 }
 
                 _panels = value;
-                RaisePropertyChanged("MatrixPanels");
+                RaisePropertyChanged("MatrixPanel");
 
             }
         }
