@@ -14,6 +14,7 @@ namespace MathUniversal.Model
         public MergeMatrix()
         {
             MatrixPanel firstPanel = new MatrixPanel();
+            Panels= new ObservableCollection<MatrixPanel>();
             Panels.Add(firstPanel);
             _thisInstance = this;
         }
@@ -24,7 +25,7 @@ namespace MathUniversal.Model
             get { return _thisInstance; }
         }
 
-        private ObservableCollection<MatrixPanel> _panels= new ObservableCollection<MatrixPanel>();
+        private ObservableCollection<MatrixPanel> _panels;
 
         public ObservableCollection<MatrixPanel> Panels
         {

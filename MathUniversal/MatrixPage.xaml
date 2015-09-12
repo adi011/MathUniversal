@@ -27,7 +27,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <ListView  VerticalAlignment="Center" HorizontalAlignment="Center" ItemTemplate="{StaticResource PanelMatrixTemplate}" ItemsSource="{Binding MatrixPanel}" Margin="10,10,87,298"/>
+            <ListView  VerticalAlignment="Center" HorizontalAlignment="Center" ItemTemplate="{StaticResource PanelMatrixTemplate}" ItemsSource="{Binding Panels}" Margin="10,10,87,298"/>
             <Button Margin="169,561,0,47" Content="Add Matrix" Command="{Binding AddMatrixPanel}" />
             <Button Content="Temporary back navigate" Margin="77,598,0,10" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}" /> 
         </Grid>

@@ -24,7 +24,7 @@ namespace MathUniversal.ViewModel
 
         private MergeMatrix _panel;
 
-        public ObservableCollection<MatrixPanel> Panel
+        public ObservableCollection<MatrixPanel> Panels
         {
             get
             {
