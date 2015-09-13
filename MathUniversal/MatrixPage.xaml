@@ -10,14 +10,14 @@
 
     <Page.Resources>
         <DataTemplate x:Key="PanelMatrixTemplate">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Text="x:"/>
-                    <TextBox  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixHeight,Mode=TwoWay}"/>   
+            <StackPanel Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="x:"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixHeight,Mode=TwoWay}"/>   
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="y:"/>
-                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixWidth,Mode=TwoWay}"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixWidth,Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
