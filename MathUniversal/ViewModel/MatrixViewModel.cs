@@ -49,19 +49,6 @@ namespace MathUniversal.ViewModel
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         private RelayCommand _backToStartCommand;
         public RelayCommand BackToStartCommand
         {
@@ -70,12 +57,25 @@ namespace MathUniversal.ViewModel
                 return _backToStartCommand;
             }
         }
-
-        
         void BackNavigation()
         {
             Navigation.NavigationToStartPage();
         }
+
+
+
+
+
+
+
+
+
+
+
+       
+
+        
+        
 
         private RelayCommand _introduceSize;
         public RelayCommand IntroduceSize
