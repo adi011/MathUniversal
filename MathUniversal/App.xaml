@@ -23,6 +23,22 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding ResultString,Mode=OneWay}" Margin="10,0,0,0" />
                 <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameErrorMessage,Mode=OneWay}" Margin="10,0,0,0" />
                 <Button Content="Remove"  Command="{Binding RemoveCommand}" Grid.Column="2" Grid.Row="0" />
+                <Button Content="Help" Grid.Column="2" Grid.Row="1">
+                    <Button.Flyout>
+                        <Flyout Placement="Full">
+                            <Grid>
+                                <RichTextBlock>
+                                    <Paragraph>
+                                        <Bold>Help</Bold>
+                                    </Paragraph>
+                                    <Paragraph>
+                                        <Hyperlink NavigateUri="https://github.com/FlorianRappl/YAMP/wiki">All functions</Hyperlink>
+                                    </Paragraph>
+                                </RichTextBlock>
+                            </Grid>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
             </Grid>
         </DataTemplate>
     </Application.Resources>
