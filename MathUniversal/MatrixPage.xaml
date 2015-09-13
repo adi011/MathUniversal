@@ -9,25 +9,36 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="PanelMatrixTemplate">
-            <StackPanel Margin="0,0,0,10">
-                <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="x:"/>
-                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixHeight,Mode=TwoWay}"/>   
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="y:"/>
-                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixWidth,Mode=TwoWay}"/>
+        
+            <DataTemplate x:Key="PanelMatrixTemplate" >
+            <StackPanel Orientation="Horizontal">
+                 <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="x:"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixHeight,Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="y:"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Text="{Binding MatrixWidth,Mode=TwoWay}"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
+               
+            </DataTemplate>
+        
+        <DataTemplate x:Key="CellMatrixTemplate">
+            <TextBox />
         </DataTemplate>
+        
+        
     </Page.Resources>
 
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="#3F53ff">
-            <ListView  VerticalAlignment="Center" HorizontalAlignment="Center" ItemTemplate="{StaticResource PanelMatrixTemplate}" ItemsSource="{Binding Panels}" Margin="10,10,87,298"/>
+            <ListView VerticalAlignment="Center" HorizontalAlignment="Center" ItemTemplate="{StaticResource PanelMatrixTemplate}" ItemsSource="{Binding Panels}" Margin="10,10,87,298"/>
+            
             <Button Margin="169,561,0,47" Content="Add Matrix" Command="{Binding AddPanelCommand}" />
             <Button Content="Temporary back navigate" Margin="77,598,0,10" Foreground="#8B97FF" Background="#464C7F" Command="{Binding BackToStartCommand}" /> 
         </Grid>

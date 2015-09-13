@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace MathUniversal.ViewModel
 {
-    class Matrix: ObservableObject
+    public class Matrix: ObservableObject
     {
        
 

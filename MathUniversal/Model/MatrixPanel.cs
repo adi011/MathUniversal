@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using MathUniversal.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,11 @@ namespace MathUniversal.Model
             }
         }
 
+        void drawMatrix()
+        {
+            Matrix matrix=new Matrix();
 
+        }
 
 
 
