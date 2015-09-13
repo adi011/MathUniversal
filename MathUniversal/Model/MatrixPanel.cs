@@ -23,7 +23,8 @@ namespace MathUniversal.Model
             }
             set
             {
-                _matrixHeight = value;
+                if (CheckCorrectValue(value))
+                    _matrixHeight = value;
                 RaisePropertyChanged("MatrixHeight");
             }
         }
@@ -36,13 +37,26 @@ namespace MathUniversal.Model
             }
             set
             {
-                _matrixWidth = value;
+                if(CheckCorrectValue(value))
+                    _matrixWidth = value;
                 RaisePropertyChanged("MatrixWidth");
             }
         }
 
 
-
+        private bool CheckCorrectValue(string value)
+        {
+            try
+            {
+                int content=Int32.Parse(value);
+                if (content < 1) return false;
+                return true;
+            }
+            catch (FormatException e)
+            {
+                return false;
+            }
+        }
 
 
 
