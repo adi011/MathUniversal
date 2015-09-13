@@ -13,11 +13,11 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Text="x:"/>
-                    <TextBox  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixHeight,Mode=OneWay}"/>   
+                    <TextBox  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixHeight,Mode=TwoWay}"/>   
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="y:"/>
-                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixWidth,Mode=OneWay}"/>
+                    <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MatrixWidth,Mode=TwoWay}"/>
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
