@@ -5,8 +5,7 @@
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLight": "5.2.0",
-    "MvvmLightLibs": "5.2.0",
-    "YAMP.Portable": "1.4.0"
+    "MvvmLightLibs": "5.2.0"
   },
   "frameworks": {
     "uap10.0": {}
