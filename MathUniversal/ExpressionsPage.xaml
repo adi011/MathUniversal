@@ -18,7 +18,23 @@
                 </ListView.ItemContainerStyle>
             </ListView>
             <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Add" Margin="10,0,0,0" Foreground="#8B97FF" Background="#464C7F" Command="{Binding AddCommand}"/>
-            <Button Content="Temporary back navigate" Margin="164,608,0,0" Click="BackToStartPage" Foreground="#8B97FF" Background="#464C7F" />
+            <Button  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Help" Grid.Column="2" Grid.Row="1">
+                <Button.Flyout>
+                    <Flyout Placement="Full">
+                        <Grid>
+                            <RichTextBlock>
+                                <Paragraph>
+                                    <Bold>Help</Bold>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Hyperlink NavigateUri="https://github.com/FlorianRappl/YAMP/wiki">All functions</Hyperlink>
+                                </Paragraph>
+                            </RichTextBlock>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Back"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BackToStartPage" Foreground="#8B97FF" Background="#464C7F" Width="94" />
         </Grid>
     </Grid>
 </Page>
