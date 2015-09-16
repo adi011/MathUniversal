@@ -21,13 +21,26 @@
             <Button  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Help" Grid.Column="2" Grid.Row="1">
                 <Button.Flyout>
                     <Flyout Placement="Full">
-                        <Grid>
+                        <Grid >
                             <RichTextBlock>
                                 <Paragraph>
                                     <Bold>Help</Bold>
                                 </Paragraph>
                                 <Paragraph>
                                     <Hyperlink NavigateUri="https://github.com/FlorianRappl/YAMP/wiki">All functions</Hyperlink>
+                                    <LineBreak/>
+                                    <Hyperlink NavigateUri="https://github.com/adi011/MathUniversal/wiki/Expressions">More Info</Hyperlink>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Bold>About</Bold>
+                                    <LineBreak/>
+                                    Each expression entry has field for name (optional) and expression.
+                                    <LineBreak/>
+                                    Expressions may contain functions like sin(pi).
+                                    <LineBreak/>
+                                    Pi is already defined constant, but other expressions with names can be also used.
+                                    <LineBreak/>
+                                    If expression depends on other expression it's value will be updated when the other expression changes.
                                 </Paragraph>
                             </RichTextBlock>
                         </Grid>
