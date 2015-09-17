@@ -14,29 +14,13 @@ namespace MathUniversal.ViewModel
         public ExpressionsViewModel()
         {
             _expressions = new MathExpressions();
-            _addCommand = new RelayCommand(AddExpressions);
+            AddCommand = new RelayCommand(AddExpressions);
         }
 
 
         private MathExpressions _expressions;
-        public ObservableCollection<Expression> Expressions
-        {
-            get
-            {
-                return _expressions.Expressions;
-            }
-
-        }
-
-        private RelayCommand _addCommand;
-
-        public RelayCommand AddCommand
-        {
-            get
-            {
-                return _addCommand;
-            }
-        }
+        public ObservableCollection<Expression> Expressions => _expressions.Expressions;
+        public RelayCommand AddCommand { get; }
 
         private void AddExpressions()
         {
