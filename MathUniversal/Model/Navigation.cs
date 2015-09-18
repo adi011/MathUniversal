@@ -11,24 +11,22 @@ namespace MathUniversal.Model
     public static class Navigation
     {
         private static Frame rootFrame = Window.Current.Content as Frame;
-        public static void NavigationToStartPage()
+        private static Stack<Type> lastPages = new Stack<Type>();
+        public static void NavigateTo(Type pageType)
         {
-            rootFrame.Navigate(typeof(StartPage));
+            if (rootFrame != null)
+            { 
+            lastPages.Push(rootFrame.CurrentSourcePageType);
+            rootFrame.Navigate(pageType);
+            }
         }
-
-        public static void NavigationToExpressionsPage()
+        public static void GoBack()
         {
-            rootFrame.Navigate(typeof(ExpressionsPage));
+            if (rootFrame != null && lastPages.Count>0)
+            {
+                rootFrame.Navigate(lastPages.Pop());
+            }
         }
-        public static void NavigationToMatrixPage()
-        {
-            rootFrame.Navigate(typeof(MatrixPage));
-        }
-        public static void NavigationToTheSystemOfEquationsPage()
-        {
-            rootFrame.Navigate(typeof(TheSystemOfEquationsPage));
-        }
-
 
     }
 }
