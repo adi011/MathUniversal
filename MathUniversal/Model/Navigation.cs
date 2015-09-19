@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Phone.UI.Input;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -28,5 +30,17 @@ namespace MathUniversal.Model
             }
         }
 
+        public static void BackPressed(object sender, BackPressedEventArgs e)
+        {
+            e.Handled = true;
+            if (lastPages.Count > 0)
+            {
+                GoBack();
+            }
+            else
+            {
+                Application.Current.Exit();
+            }
+        }
     }
 }

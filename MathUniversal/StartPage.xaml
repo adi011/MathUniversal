@@ -7,11 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     DataContext="{Binding Source={StaticResource Locator}, Path=Start}"
     mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,10">
-        <Grid Background="#3F53ff">
-            <Button Content="Expresion" Margin="140,66,0,530" Height="34" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToExpressions}" />
-            <Button Content="Matrix" Margin="140,105,0,485" Height="40" Width="84" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToMatrix}" />
-            <Button Content="The system of equations" Margin="140,179,-33,419" Height="32" Width="253" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToTheSystemOfEquations}"/>
-        </Grid>
+    <Grid Background="#3F53ff">
+        <StackPanel VerticalAlignment="Center">
+            <Button HorizontalAlignment="Center" Content="Expresion"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToExpressions}" />
+            <Button HorizontalAlignment="Center" Content="Matrix"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToMatrix}" />
+            <Button HorizontalAlignment="Center" Content="The system of equations" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToTheSystemOfEquations}"/>
+        </StackPanel>
     </Grid>
 </Page>
