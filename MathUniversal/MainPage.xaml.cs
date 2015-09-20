@@ -26,13 +26,7 @@ namespace MathUniversal
         public MainPage()
         {
             this.InitializeComponent();
-            NewMethod();
         }
 
-        private async void NewMethod() // tsa lepiej nazwij to MisioPysio
-        {
-            await Task.Delay(1000);
-            Frame.Navigate(typeof(StartPage));
-        }
     }
 }

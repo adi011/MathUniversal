@@ -9,9 +9,9 @@
     mc:Ignorable="d">
     <Grid Background="#3F53ff">
         <StackPanel VerticalAlignment="Center">
-            <Button HorizontalAlignment="Center" Content="Expresion"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToExpressions}" />
-            <Button HorizontalAlignment="Center" Content="Matrix"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToMatrix}" />
-            <Button HorizontalAlignment="Center" Content="The system of equations" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToTheSystemOfEquations}"/>
+            <Button Margin="10" HorizontalAlignment="Center" Content="Expresion"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToExpressions}" />
+            <Button Margin="10" HorizontalAlignment="Center" Content="Matrix"  Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToMatrix}" />
+            <Button Margin="10" HorizontalAlignment="Center" Content="The system of equations" Foreground="#8B97FF" Background="#464C7F" Command="{Binding NavigateToTheSystemOfEquations}"/>
         </StackPanel>
     </Grid>
 </Page>
