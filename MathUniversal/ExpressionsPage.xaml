@@ -21,20 +21,43 @@
             <Button  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Help" Grid.Column="2" Grid.Row="1">
                 <Button.Flyout>
                     <Flyout Placement="Full">
-                        <Grid>
+                        <Grid >
                             <RichTextBlock>
                                 <Paragraph>
                                     <Bold>Help</Bold>
                                 </Paragraph>
                                 <Paragraph>
                                     <Hyperlink NavigateUri="https://github.com/FlorianRappl/YAMP/wiki">All functions</Hyperlink>
+                                    <LineBreak/>
+                                    <Hyperlink NavigateUri="https://github.com/adi011/MathUniversal/wiki/Expressions">More Info</Hyperlink>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Bold>About</Bold>
+                                    <LineBreak/>
+                                    Each expression entry has field for name (optional) and expression.
+                                    <LineBreak/>
+                                    Expressions may contain functions like sin(pi).
+                                    <LineBreak/>
+                                    Pi is already defined constant, but other expressions with names can be also used.
+                                </Paragraph>
+                                <Paragraph>
+                                    <LineBreak/>
+                                    If expression depends on other expression it's value will be updated when the other expression changes.
+                                    <LineBreak/>
+                                    Order of expressions doesnt matter.
+                                </Paragraph>
+                                <Paragraph>
+                                    <LineBreak/>
+                                    Expression can be an array.
+                                    <LineBreak/>
+                                    For example variable x with expression: [1,2,3]. 5*x will result 5,10,15.
                                 </Paragraph>
                             </RichTextBlock>
                         </Grid>
                     </Flyout>
                 </Button.Flyout>
             </Button>
-            <Button Content="Back"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BackToStartPage" Foreground="#8B97FF" Background="#464C7F" Width="94" />
+            <Button Content="Back"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding GoBackCommand}" Foreground="#8B97FF" Background="#464C7F" Width="94" />
         </Grid>
     </Grid>
 </Page>

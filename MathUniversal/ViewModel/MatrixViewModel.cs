@@ -59,7 +59,7 @@ namespace MathUniversal.ViewModel
         }
         void BackNavigation()
         {
-            Navigation.NavigationToStartPage();
+            Navigation.GoBack();
         }
 
 

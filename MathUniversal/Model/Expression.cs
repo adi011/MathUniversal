@@ -113,8 +113,8 @@ namespace MathUniversal
                 }
 
                 _expressionString = value;
-                RaisePropertyChanged(nameof(ExpressionString));
                 ParseExpression();
+                RaisePropertyChanged(nameof(ExpressionString));
             }
         }
         private Value _result;
@@ -152,8 +152,6 @@ namespace MathUniversal
                 _errorMessage = value;
                 RaisePropertyChanged(nameof(ErrorMessage));
                 RaisePropertyChanged(nameof(ResultString));
-                var sources = new List<Expression>();
-                sources.Add(this);
             }
         }
 

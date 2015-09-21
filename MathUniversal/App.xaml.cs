@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathUniversal.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,6 +35,11 @@ namespace MathUniversal
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+if (ApiInformation.IsApiContractPresent ("Windows.Phone.PhoneContract", 1, 0)) {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += Navigation.BackPressed;
+
+}
+
         }
 
         /// <summary>
@@ -75,7 +82,7 @@ namespace MathUniversal
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(StartPage), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

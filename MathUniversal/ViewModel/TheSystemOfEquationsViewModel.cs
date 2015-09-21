@@ -35,7 +35,7 @@ namespace MathUniversal.ViewModel
 
         private void BackNavigation()
         {
-            Navigation.NavigationToStartPage();
+            Navigation.GoBack();
         }
     }
 }
