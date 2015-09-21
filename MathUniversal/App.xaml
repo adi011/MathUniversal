@@ -18,8 +18,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Name,Mode=TwoWay}" PlaceholderText="Name" />
-                <TextBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding ExpressionString,Mode=TwoWay}" PlaceholderText="Expression" />
+                <TextBox Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Name,Mode=TwoWay}" PlaceholderText="Name" InputScope="AlphanumericFullWidth" />
+                <TextBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding ExpressionString,Mode=TwoWay}" PlaceholderText="Expression" AcceptsReturn="True" />
                 <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding ResultString,Mode=OneWay}" Margin="10,0,0,0" />
                 <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameErrorMessage,Mode=OneWay}" Margin="10,0,0,0" />
                 <Button Content="Remove"  Command="{Binding RemoveCommand}" Grid.Column="2" Grid.Row="0" />

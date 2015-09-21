@@ -39,8 +39,18 @@
                                     Expressions may contain functions like sin(pi).
                                     <LineBreak/>
                                     Pi is already defined constant, but other expressions with names can be also used.
+                                </Paragraph>
+                                <Paragraph>
                                     <LineBreak/>
                                     If expression depends on other expression it's value will be updated when the other expression changes.
+                                    <LineBreak/>
+                                    Order of expressions doesnt matter.
+                                </Paragraph>
+                                <Paragraph>
+                                    <LineBreak/>
+                                    Expression can be an array.
+                                    <LineBreak/>
+                                    For example variable x with expression: [1,2,3]. 5*x will result 5,10,15.
                                 </Paragraph>
                             </RichTextBlock>
                         </Grid>
